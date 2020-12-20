@@ -6,12 +6,17 @@ import { JournalistDetailComponent } from './journalists/journalist-detail/journ
 import { JournalistListComponent } from './journalists/journalist-list/journalist-list.component';
 import { MediaListComponent } from './media/media-list/media-list.component';
 import { TopicListComponent } from './topic/topic-list/topic-list.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'journalists', component: JournalistListComponent },
   { path: 'journalists/:id', component: JournalistDetailComponent },
-  { path: 'addjournalists', component: JournalistAddComponent },
+  {
+    path: 'addjournalists',
+    component: JournalistAddComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'media', component: MediaListComponent },
   { path: 'topic', component: TopicListComponent },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
