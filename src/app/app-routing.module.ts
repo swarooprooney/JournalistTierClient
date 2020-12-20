@@ -10,13 +10,19 @@ import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'addjournalists',
+        component: JournalistAddComponent,
+      },
+    ],
+  },
   { path: 'journalists', component: JournalistListComponent },
   { path: 'journalists/:id', component: JournalistDetailComponent },
-  {
-    path: 'addjournalists',
-    component: JournalistAddComponent,
-    canActivate: [AuthGuard],
-  },
   { path: 'media', component: MediaListComponent },
   { path: 'topic', component: TopicListComponent },
   { path: '**', component: HomeComponent, pathMatch: 'full' },
