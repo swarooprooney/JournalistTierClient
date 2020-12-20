@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../_services/authentication.service';
 import { JournalistService } from '../_services/journalist.service';
 
@@ -14,7 +15,8 @@ export class NavComponent implements OnInit {
   constructor(
     public authenticationService: AuthenticationService,
     private journalistService: JournalistService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -25,16 +27,19 @@ export class NavComponent implements OnInit {
     this.authenticationService.login(this.model).subscribe(
       (response) => {
         //console.log(response);
+        this.toastr.success('Welcome');
         this.router.navigateByUrl('/journalists');
       },
       (error) => {
         console.log(error);
+        this.toastr.error(error.error);
       }
     );
   }
 
   logout(): void {
     this.authenticationService.logout();
+    this.toastr.success('Logged out successfully');
     this.router.navigateByUrl('/');
   }
 

@@ -16,6 +16,7 @@ import { JournalistListComponent } from './journalists/journalist-list/journalis
 import { JournalistAddComponent } from './journalists/journalist-add/journalist-add.component';
 import { MediaListComponent } from './media/media-list/media-list.component';
 import { TopicListComponent } from './topic/topic-list/topic-list.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,9 @@ import { TopicListComponent } from './topic/topic-list/topic-list.component';
     BrowserAnimationsModule,
     FormsModule,
     BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
