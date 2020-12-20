@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from './_models/user';
+import { AuthenticationService } from './_services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   journalists: any;
   title = 'The Journalist Rating App';
-  constructor(private http: HttpClient) {}
+  constructor(private authenticationService: AuthenticationService) {}
   ngOnInit(): void {
-    this.getJournalists();
+    this.setCurrentUser();
   }
 
-  getJournalists(): void {
-    this.http
-      .get('https://journalisttier.azurewebsites.net/api/journalist/')
-      .subscribe(
-        (response) => {
-          this.journalists = response;
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+  setCurrentUser() {
+    const user: User = JSON.parse(localStorage.getItem('user')!);
+    this.authenticationService.setCurrentUser(user);
   }
 }

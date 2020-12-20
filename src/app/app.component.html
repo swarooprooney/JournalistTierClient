@@ -1,7 +1,4 @@
-<h1>{{ title }}</h1>
-<ul>
-  <li *ngFor="let journalist of journalists">
-    {{ journalist.journalistId }} -
-    {{ journalist.name }}
-  </li>
-</ul>
+<app-nav></app-nav>
+<div class="container" style="margin-top: 60px">
+  <router-outlet></router-outlet>
+</div>
