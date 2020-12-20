@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Journalist Rating App</a>
+    <a class="navbar-brand" routerLink="/">Journalist Rating App</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -18,15 +18,22 @@
         *ngIf="authenticationService.currentUser$ | async"
       >
         <li class="nav-item">
-          <a class="nav-link" href="#"
-            >Home <span class="sr-only">(current)</span></a
+          <a class="nav-link" routerLink="/media" routerLinkActive="active"
+            >Media
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/journalists"
+            routerLinkActive="active"
+            >Journalists</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Disabled</a>
+          <a class="nav-link" routerLink="/topic" routerLinkActive="active"
+            >Topic</a
+          >
         </li>
       </ul>
       <div

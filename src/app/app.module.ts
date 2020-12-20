@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { JournalistListComponent } from './journalists/journalist-list/journalist-list.component';
 import { JournalistAddComponent } from './journalists/journalist-add/journalist-add.component';
+import { MediaListComponent } from './media/media-list/media-list.component';
+import { TopicListComponent } from './topic/topic-list/topic-list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { JournalistAddComponent } from './journalists/journalist-add/journalist-
     RegisterComponent,
     JournalistListComponent,
     JournalistAddComponent,
+    MediaListComponent,
+    TopicListComponent,
   ],
   imports: [
     BrowserModule,

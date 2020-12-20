@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../_services/authentication.service';
 import { JournalistService } from '../_services/journalist.service';
 
@@ -12,7 +13,8 @@ export class NavComponent implements OnInit {
 
   constructor(
     public authenticationService: AuthenticationService,
-    private journalistService: JournalistService
+    private journalistService: JournalistService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class NavComponent implements OnInit {
     this.authenticationService.login(this.model).subscribe(
       (response) => {
         //console.log(response);
+        this.router.navigateByUrl('/journalists');
       },
       (error) => {
         console.log(error);
@@ -32,6 +35,7 @@ export class NavComponent implements OnInit {
 
   logout(): void {
     this.authenticationService.logout();
+    this.router.navigateByUrl('/');
   }
 
   search(): void {
