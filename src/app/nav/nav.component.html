@@ -43,10 +43,12 @@
 
       <div
         class="dropdown"
-        *ngIf="authenticationService.currentUser$ | async"
+        *ngIf="authenticationService.currentUser$ | async as user"
         dropdown
       >
-        <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
+        <a class="dropdown-toggle text-light" dropdownToggle
+          >Welcome {{ user.userName | titlecase }}</a
+        >
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item">Edit profile</a>
           <div class="dropdown-divider"></div>
