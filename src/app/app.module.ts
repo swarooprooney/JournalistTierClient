@@ -17,6 +17,7 @@ import { JournalistAddComponent } from './journalists/journalist-add/journalist-
 import { MediaListComponent } from './media/media-list/media-list.component';
 import { TopicListComponent } from './topic/topic-list/topic-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -37,10 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right',
-    }),
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
