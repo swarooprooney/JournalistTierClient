@@ -19,6 +19,8 @@ import { TopicListComponent } from './topic/topic-list/topic-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './_modules/shared.module';
 import { ErrorInterceptor } from './_interceptor/error.interceptor';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ErrorInterceptor } from './_interceptor/error.interceptor';
     JournalistAddComponent,
     MediaListComponent,
     TopicListComponent,
+    NotFoundComponent,
+    ServerErrorComponent,
   ],
   imports: [
     BrowserModule,

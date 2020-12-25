@@ -37,4 +37,11 @@
       Cancel
     </button>
   </div>
+  <div class="row mt-5">
+    <ul class="text-danger" *ngIf="validationErrors.length > 0">
+      <li *ngFor="let error of validationErrors">
+        {{ error }}
+      </li>
+    </ul>
+  </div>
 </form>

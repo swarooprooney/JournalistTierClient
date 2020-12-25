@@ -10,6 +10,7 @@ import { RegistrationService } from '../_services/registration.service';
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
+  validationErrors: string[] = [];
   constructor(private registrationService: RegistrationService) {}
 
   ngOnInit(): void {}
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.validationErrors = error;
       }
     );
   }

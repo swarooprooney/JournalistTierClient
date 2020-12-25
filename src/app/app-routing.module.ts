@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { HomeComponent } from './home/home.component';
 import { JournalistAddComponent } from './journalists/journalist-add/journalist-add.component';
 import { JournalistDetailComponent } from './journalists/journalist-detail/journalist-detail.component';
@@ -25,7 +27,9 @@ const routes: Routes = [
   { path: 'journalists/:id', component: JournalistDetailComponent },
   { path: 'media', component: MediaListComponent },
   { path: 'topic', component: TopicListComponent },
-  { path: '**', component: HomeComponent, pathMatch: 'full' },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: 'server-error', component: ServerErrorComponent },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

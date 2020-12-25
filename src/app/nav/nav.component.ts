@@ -24,17 +24,11 @@ export class NavComponent implements OnInit {
   }
 
   login(): void {
-    this.authenticationService.login(this.model).subscribe(
-      (response) => {
-        //console.log(response);
-        this.toastr.success('Welcome');
-        this.router.navigateByUrl('/journalists');
-      },
-      (error) => {
-        console.log(error);
-        this.toastr.error(error.error);
-      }
-    );
+    this.authenticationService.login(this.model).subscribe((response) => {
+      //console.log(response);
+      this.toastr.success('Welcome');
+      this.router.navigateByUrl('/journalists');
+    });
   }
 
   logout(): void {
