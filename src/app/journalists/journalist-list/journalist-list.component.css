@@ -1,0 +1,11 @@
+.firstDiv {
+    float: left;
+    display:block;
+  }
+   .secondDiv {
+    float: left;
+    display:block;
+  }
+.clear {
+    clear: both; 
+  }

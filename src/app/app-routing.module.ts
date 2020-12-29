@@ -6,7 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { JournalistAddComponent } from './journalists/journalist-add/journalist-add.component';
 import { JournalistDetailComponent } from './journalists/journalist-detail/journalist-detail.component';
 import { JournalistListComponent } from './journalists/journalist-list/journalist-list.component';
+import { JournalistRatingComponent } from './journalists/journalist-rating/journalist-rating.component';
 import { MediaListComponent } from './media/media-list/media-list.component';
+import { TopicAddComponent } from './topic/topic-add/topic-add.component';
 import { TopicListComponent } from './topic/topic-list/topic-list.component';
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -18,8 +20,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'addjournalists',
+        path: 'addjournalist',
         component: JournalistAddComponent,
+      },
+      {
+        path: 'ratejournalist',
+        component: JournalistRatingComponent,
+      },
+      {
+        path: 'addtopic',
+        component: TopicAddComponent,
       },
     ],
   },

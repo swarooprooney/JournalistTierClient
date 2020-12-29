@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import { RatingModule } from 'ngx-bootstrap/rating';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JournalistDetailComponent } from './journalists/journalist-detail/journalist-detail.component';
 import { ListsComponent } from './lists/lists.component';
 import { NavComponent } from './nav/nav.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { JournalistListComponent } from './journalists/journalist-list/journalist-list.component';
@@ -21,6 +21,8 @@ import { SharedModule } from './_modules/shared.module';
 import { ErrorInterceptor } from './_interceptor/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { JournalistRatingComponent } from './journalists/journalist-rating/journalist-rating.component';
+import { TopicAddComponent } from './topic/topic-add/topic-add.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     TopicListComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    JournalistRatingComponent,
+    TopicAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     BrowserAnimationsModule,
     FormsModule,
     SharedModule,
+    ReactiveFormsModule,
+    RatingModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

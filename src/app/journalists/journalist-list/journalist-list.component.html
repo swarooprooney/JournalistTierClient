@@ -1,1 +1,8 @@
 <p>journalist-list works!</p>
+<div class="firstDiv">
+  <ul>
+    <li *ngFor="let journalist of journalists">
+      {{ journalist.name }} and the rating is {{ journalist.rating }}
+    </li>
+  </ul>
+</div>

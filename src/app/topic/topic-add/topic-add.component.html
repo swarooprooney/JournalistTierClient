@@ -1,12 +1,12 @@
-<form #registerForm="ngForm" (ngSubmit)="addJournalist()" class="form">
-  <h2 class="text-center text-primary">Add Journalist</h2>
+<form #registerForm="ngForm" (ngSubmit)="addTopic()" class="form">
+  <h2 class="text-center text-primary">Add Topic</h2>
   <hr />
   <div class="row form-group">
     <input
       type="text"
       name="name"
       [(ngModel)]="model.name"
-      placeholder="Journalist Name"
+      placeholder="Topic Name"
       class="form-control"
     />
   </div>
@@ -17,7 +17,7 @@
       value="Submit"
       class="btn btn-success mr-2"
     >
-      Add Journalist
+      Add Topic
     </button>
     <button name="Reset" value="Reset" class="btn btn-default mr-2 btn-reset">
       Cancel
