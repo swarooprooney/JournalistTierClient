@@ -25,7 +25,7 @@ export class JournalistService {
   addJournalist(journalist: any) {
     return this.http.post(
       this.baseUrl + 'journalist/',
-      JSON.stringify(journalist.name)
+      JSON.stringify(journalist)
     );
   }
 }

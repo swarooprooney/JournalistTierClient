@@ -1,7 +1,7 @@
 <div class="card mb-4">
   <div class="card-img-wrapper">
     <img
-      src="../../../assets/images/arnab.jpg"
+      src="{{ journalist.photoUrl || '../../../assets/images/arnab.jpg' }}"
       alt="blank image"
       class="card-img-top"
     />
@@ -25,6 +25,7 @@
       {{ journalist.name }}
     </h6>
     <p class="card-text text-center">
+      <i class="fa fa-star mr-2"></i>
       {{ journalist.rating | number: "1.2-2" }}
     </p>
   </div>

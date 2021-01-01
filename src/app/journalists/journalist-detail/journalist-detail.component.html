@@ -2,7 +2,7 @@
   <div class="col-4">
     <div class="card">
       <img
-        src="../../../assets/images/arnab.jpg"
+        src="{{ journalist.photoUrl || '../../../assets/images/arnab.jpg' }}"
         alt="blank image"
         class="card-img-top img-thumbnail"
       />
@@ -25,7 +25,9 @@
   </div>
   <div class="col-8">
     <tabset class="journalist-tabset">
-      <tab heading="About {{ journalist?.name }}"></tab>
+      <tab heading="About {{ journalist?.name }}">{{
+        journalist?.description
+      }}</tab>
       <tab heading="Media">
         <h4>Media</h4>
         <p>Media will go here</p>
