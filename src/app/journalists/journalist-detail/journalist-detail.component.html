@@ -1,1 +1,36 @@
-<p>journalist-detail works!</p>
+<div class="row" *ngIf="journalist">
+  <div class="col-4">
+    <div class="card">
+      <img
+        src="../../../assets/images/arnab.jpg"
+        alt="blank image"
+        class="card-img-top img-thumbnail"
+      />
+      <div class="card-body">
+        <div>
+          <strong>Name:</strong>
+          <p>{{ journalist?.name }}</p>
+        </div>
+        <div>
+          <strong>Rating:</strong>
+          <p>{{ journalist?.rating }}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group d-flex">
+          <div class="btn btn-primary">Rate Journalist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <tabset class="journalist-tabset">
+      <tab heading="About {{ journalist?.name }}"></tab>
+      <tab heading="Media">
+        <h4>Media</h4>
+        <p>Media will go here</p>
+      </tab>
+      <tab heading="Ratings"></tab>
+    </tabset>
+  </div>
+</div>

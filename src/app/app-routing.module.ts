@@ -34,7 +34,7 @@ const routes: Routes = [
     ],
   },
   { path: 'journalists', component: JournalistListComponent },
-  { path: 'journalists/:id', component: JournalistDetailComponent },
+  { path: 'journalist/:id', component: JournalistDetailComponent },
   { path: 'media', component: MediaListComponent },
   { path: 'topic', component: TopicListComponent },
   { path: 'not-found', component: NotFoundComponent },

@@ -25,7 +25,6 @@ export class NavComponent implements OnInit {
 
   login(): void {
     this.authenticationService.login(this.model).subscribe((response) => {
-      //console.log(response);
       this.toastr.success('Welcome');
       this.router.navigateByUrl('/journalists');
     });
@@ -38,7 +37,7 @@ export class NavComponent implements OnInit {
   }
 
   search(): void {
-    this.journalistService.search(this.model).subscribe(
+    this.journalistService.searchJournalist(this.model).subscribe(
       (response) => {
         console.log(response);
       },

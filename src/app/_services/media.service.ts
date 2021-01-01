@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MediaService {
   constructor(private http: HttpClient) {}
-  baseUrl = 'http://localhost:5000/api/';
+  baseUrl = environment.apiUrl;
   getMedias() {
     return this.http.get(this.baseUrl + 'media');
   }

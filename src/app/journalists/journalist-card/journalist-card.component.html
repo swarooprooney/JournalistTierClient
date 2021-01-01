@@ -1,0 +1,31 @@
+<div class="card mb-4">
+  <div class="card-img-wrapper">
+    <img
+      src="../../../assets/images/arnab.jpg"
+      alt="blank image"
+      class="card-img-top"
+    />
+    <ul class="list-inline jounalist-icons animate text-center">
+      <li class="list-inline-item">
+        <button
+          routerLink="/journalist/{{ journalist.journalistId }}"
+          class="btn btn-primary mr-2"
+        >
+          <i class="fa fa-user"></i>
+        </button>
+        <button class="btn btn-primary">
+          <i class="fa fa-star"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body-p1">
+    <h6 class="card-title text-center mb-1">
+      <i class="fa fa-user mr-2"></i>
+      {{ journalist.name }}
+    </h6>
+    <p class="card-text text-center">
+      {{ journalist.rating | number: "1.2-2" }}
+    </p>
+  </div>
+</div>

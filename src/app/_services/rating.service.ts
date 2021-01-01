@@ -1,25 +1,19 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RatingService {
-  baseUrl = 'http://localhost:5000/api/';
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
-
-  private requestOptions = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
 
   rateJournalist(model: any) {
     console.log(model);
     return this.http.post(
       this.baseUrl + 'journalist/RateJournalist',
-      JSON.stringify(model),
-      {
-        headers: this.requestOptions,
-      }
+      JSON.stringify(model)
     );
   }
 

@@ -1,20 +1,21 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Journalist } from '../_models/journalist';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JournalistService {
-  baseUrl = 'http://localhost:5000/api/';
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  private requestOptions = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
+  searchJournalist(model: any) {
+    return this.http.get<Journalist>(this.baseUrl + 'journalist/' + model.id);
+  }
 
-  search(model: any) {
-    return this.http.get(this.baseUrl + 'journalist/' + model.id);
+  getJournalist(id: number) {
+    return this.http.get<Journalist>(this.baseUrl + 'journalist/' + id);
   }
 
   getJournalists() {
@@ -24,10 +25,7 @@ export class JournalistService {
   addJournalist(journalist: any) {
     return this.http.post(
       this.baseUrl + 'journalist/',
-      JSON.stringify(journalist.name),
-      {
-        headers: this.requestOptions,
-      }
+      JSON.stringify(journalist.name)
     );
   }
 }
