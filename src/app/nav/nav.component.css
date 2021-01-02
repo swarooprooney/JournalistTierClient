@@ -1,3 +1,8 @@
 .dropdown-toggle, .dropdown-item{
     cursor: pointer;
 }
+
+.custom-alignment{
+    margin-top: 8px;
+    margin-left: 6px;
+}
