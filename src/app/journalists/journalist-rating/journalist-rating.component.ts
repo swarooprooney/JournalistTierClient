@@ -31,7 +31,7 @@ export class JournalistRatingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.rate = 5;
+    this.rate = 0;
     this.journalistService.getJournalists().subscribe((response) => {
       this.journalists = response;
     });
