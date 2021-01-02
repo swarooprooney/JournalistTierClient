@@ -1,26 +1,44 @@
 <form #registerForm="ngForm" (ngSubmit)="addTopic()" class="form">
   <h2 class="text-center text-primary">Add Topic</h2>
   <hr />
-  <div class="row form-group">
-    <input
-      type="text"
-      name="name"
-      [(ngModel)]="model.name"
-      placeholder="Topic Name"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group text-center">
-    <button
-      type="submit"
-      name="submit"
-      value="Submit"
-      class="btn btn-success mr-2"
-    >
-      Add Topic
-    </button>
-    <button name="Reset" value="Reset" class="btn btn-default mr-2 btn-reset">
-      Cancel
-    </button>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="form-group">
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="model.name"
+          placeholder="Topic Name"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          name="description"
+          [(ngModel)]="model.description"
+          placeholder="Description"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group text-center">
+        <button
+          type="submit"
+          name="submit"
+          value="Submit"
+          class="btn btn-success mr-2"
+        >
+          Add Topic
+        </button>
+        <button
+          name="Reset"
+          value="Reset"
+          class="btn btn-default mr-2 btn-reset"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
   </div>
 </form>

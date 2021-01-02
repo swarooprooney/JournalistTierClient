@@ -13,6 +13,6 @@ export class TopicService {
   }
 
   addTopic(topic: any) {
-    return this.http.post(this.baseUrl + 'topic/', JSON.stringify(topic.name));
+    return this.http.post(this.baseUrl + 'topic/', JSON.stringify(topic));
   }
 }
