@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { RatingByTopic } from '../_models/ratingbytopic';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,16 @@ export class RatingService {
     return this.http.get(this.baseUrl + 'journalist/GetJournalistTier', {
       params: params,
     });
+  }
+
+  getJournalistRatingByTopic(journalistId: number) {
+    let params = new HttpParams();
+    params = params.append('journalistId', journalistId.toString());
+    return this.http.get<RatingByTopic[]>(
+      this.baseUrl + 'journalist/GetJournalistRatingByTopic',
+      {
+        params: params,
+      }
+    );
   }
 }

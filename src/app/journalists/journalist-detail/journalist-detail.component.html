@@ -13,7 +13,7 @@
         </div>
         <div>
           <strong>Rating:</strong>
-          <p>{{ journalist?.rating }}</p>
+          <p><i class="fa fa-star mr-2"></i> {{ journalist?.rating }}</p>
         </div>
       </div>
       <div class="card-footer">
@@ -25,14 +25,26 @@
   </div>
   <div class="col-8">
     <tabset class="journalist-tabset">
-      <tab heading="About {{ journalist?.name }}">{{
-        journalist?.description
-      }}</tab>
+      <tab heading="About {{ journalist?.name }}"
+        ><div class="mt-2">
+          {{ journalist?.description }}
+        </div></tab
+      >
       <tab heading="Media">
         <h4>Media</h4>
         <p>Media will go here</p>
       </tab>
-      <tab heading="Ratings"></tab>
+      <tab heading="Ratings" (selectTab)="onSelectRating()">
+        <div class="mt-2" *ngFor="let rating of ratingsByTopic">
+          {{ rating.topicName }} -
+          {{ rating.rating }}
+          <rating
+            [(ngModel)]="rating.rating"
+            [max]="5"
+            [readonly]="true"
+          ></rating>
+        </div>
+      </tab>
     </tabset>
   </div>
 </div>

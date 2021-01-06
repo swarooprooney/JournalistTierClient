@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 import { Journalist } from 'src/app/_models/journalist';
 import { JournalistTierQuery } from 'src/app/_models/journalisttierquery';
+import { RatingByTopic } from 'src/app/_models/ratingbytopic';
 import { JournalistService } from 'src/app/_services/journalist.service';
 import { RatingService } from 'src/app/_services/rating.service';
 
@@ -17,6 +19,8 @@ export class JournalistDetailComponent implements OnInit {
     topicId: -1,
     mediaId: 0,
   };
+  ratingsByTopic: RatingByTopic[] = [];
+
   constructor(
     private journalistService: JournalistService,
     private route: ActivatedRoute,
@@ -43,6 +47,14 @@ export class JournalistDetailComponent implements OnInit {
       .getJournalistRating(this.journalistRating)
       .subscribe((response) => {
         this.journalist.rating = +response;
+      });
+  }
+
+  onSelectRating() {
+    this.ratingService
+      .getJournalistRatingByTopic(this.journalist?.journalistId)
+      .subscribe((response) => {
+        this.ratingsByTopic = response;
       });
   }
 }
