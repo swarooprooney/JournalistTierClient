@@ -1,0 +1,95 @@
+<div class="row" *ngIf="user">
+  <div class="col-4">
+    <h1>Your profile</h1>
+  </div>
+  <div class="col-8">
+    <div class="alert alert-info" *ngIf="editForm?.dirty">
+      <strong>Information: </strong>You have made changes. Any unsaved changes
+      will be lost.
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <img src="https://via.placeholder.com/225" alt="{{ user.knownAs }}" />
+    </div>
+    <div class="card-body">
+      <div>
+        <strong>Name:</strong>
+        <p>{{ user.userName }}</p>
+      </div>
+      <div>
+        <strong>Known As:</strong>
+        <p>{{ user.knownAs }}</p>
+      </div>
+      <div>
+        <strong>DOB:</strong>
+        <p>{{ user.dateOfBirth }}</p>
+      </div>
+      <div>
+        <strong>Place:</strong>
+        <p>{{ user.city }},{{ user.state }},{{ user.country }}</p>
+      </div>
+    </div>
+    <div>
+      <button
+        type="submit"
+        form="editForm"
+        [disabled]="!editForm?.dirty"
+        class="btn btn-success btn-block"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+  <div class="col-8">
+    <form #editForm="ngForm" (ngSubmit)="saveChanges()" id="editForm">
+      <h4>Username</h4>
+      <input
+        type="text"
+        name="userName"
+        [(ngModel)]="user.userName"
+        class="form-control"
+      />
+      <h4>Known As</h4>
+      <input
+        type="text"
+        name="knownAs"
+        [(ngModel)]="user.knownAs"
+        class="form-control"
+      />
+      <h4>DateOfBirth</h4>
+      <input
+        type="date"
+        name="dateOfBirth"
+        [ngModel]="user.dateOfBirth | date: 'yyyy-MM-dd'"
+        (ngModelChange)="user.dateOfBirth = $event"
+        rows="6"
+        class="form-control"
+      />
+      <h4 class="mt-2">Location Details</h4>
+      <div class="form-inline">
+        <label for="city" class="mt-2">City: </label>
+        <input
+          type="text"
+          name="city"
+          [(ngModel)]="user.city"
+          class="form-control mt-2"
+        />
+        <label for="state" class="mt-2">State: </label>
+        <input
+          type="text"
+          name="state"
+          [(ngModel)]="user.state"
+          class="form-control mt-2"
+        />
+        <label for="country" class="mt-2">Country: </label>
+        <input
+          type="text"
+          name="country"
+          [(ngModel)]="user.country"
+          class="form-control mt-2"
+        />
+      </div>
+    </form>
+  </div>
+</div>

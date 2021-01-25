@@ -8,6 +8,7 @@ import { Journalist } from '../_models/journalist';
 })
 export class JournalistService {
   baseUrl = environment.apiUrl;
+  journalist: Journalist[] = [];
   constructor(private http: HttpClient) {}
 
   searchJournalist(model: any) {

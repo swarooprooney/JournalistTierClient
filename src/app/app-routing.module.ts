@@ -8,9 +8,11 @@ import { JournalistDetailComponent } from './journalists/journalist-detail/journ
 import { JournalistListComponent } from './journalists/journalist-list/journalist-list.component';
 import { JournalistRatingComponent } from './journalists/journalist-rating/journalist-rating.component';
 import { MediaListComponent } from './media/media-list/media-list.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { TopicAddComponent } from './topic/topic-add/topic-add.component';
 import { TopicListComponent } from './topic/topic-list/topic-list.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +32,11 @@ const routes: Routes = [
       {
         path: 'addtopic',
         component: TopicAddComponent,
+      },
+      {
+        path: 'member/edit',
+        component: MemberEditComponent,
+        canDeactivate: [PreventUnsavedChangesGuard],
       },
     ],
   },

@@ -26,6 +26,9 @@ import { JournalistRatingComponent } from './journalists/journalist-rating/journ
 import { TopicAddComponent } from './topic/topic-add/topic-add.component';
 import { JournalistCardComponent } from './journalists/journalist-card/journalist-card.component';
 import { JwtInterceptor } from './_interceptor/jwt.interceptor';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './_interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,7 @@ import { JwtInterceptor } from './_interceptor/jwt.interceptor';
     JournalistRatingComponent,
     TopicAddComponent,
     JournalistCardComponent,
+    MemberEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,10 +61,12 @@ import { JwtInterceptor } from './_interceptor/jwt.interceptor';
     BsDropdownModule.forRoot(),
     ToastrModule,
     TabsModule.forRoot(),
+    NgxSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
