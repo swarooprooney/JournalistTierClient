@@ -7,4 +7,5 @@ export interface User {
   state: string;
   country: string;
   knownAs: string;
+  photoUrl: string;
 }

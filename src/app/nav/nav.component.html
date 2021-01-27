@@ -59,6 +59,7 @@
         *ngIf="authenticationService.currentUser$ | async as user"
         dropdown
       >
+        <img src="{{ user.photoUrl }}" alt="{{ user.knownAs }}" />
         <a class="dropdown-toggle text-light" dropdownToggle
           >Welcome {{ user.userName | titlecase }}</a
         >
