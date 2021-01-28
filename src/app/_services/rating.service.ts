@@ -11,7 +11,6 @@ export class RatingService {
   constructor(private http: HttpClient) {}
 
   rateJournalist(model: any) {
-    console.log(model);
     return this.http.post(
       this.baseUrl + 'journalist/RateJournalist',
       JSON.stringify(model)
@@ -19,7 +18,6 @@ export class RatingService {
   }
 
   getJournalistRating(model: any) {
-    console.log(model);
     let params = new HttpParams();
     params = params.append('journalistId', model.journalistId);
     params = params.append('topicId', model.topicId);

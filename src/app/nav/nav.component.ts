@@ -19,9 +19,7 @@ export class NavComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.authenticationService.currentUser$);
-  }
+  ngOnInit(): void {}
 
   login(): void {
     this.authenticationService.login(this.model).subscribe((response) => {

@@ -19,11 +19,9 @@ export class RegisterComponent implements OnInit {
   register() {
     this.registrationService.register(this.model).subscribe(
       (response) => {
-        console.log(response);
         this.reset();
       },
       (error) => {
-        console.log(error);
         this.validationErrors = error;
       }
     );
@@ -31,6 +29,5 @@ export class RegisterComponent implements OnInit {
 
   reset() {
     this.cancelRegister.emit(false);
-    console.log('Reset was called');
   }
 }

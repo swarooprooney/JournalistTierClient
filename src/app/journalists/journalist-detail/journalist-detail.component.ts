@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TabDirective } from 'ngx-bootstrap/tabs';
 import { Journalist } from 'src/app/_models/journalist';
 import { JournalistTierQuery } from 'src/app/_models/journalisttierquery';
+import { Rating } from 'src/app/_models/rating';
 import { RatingByTopic } from 'src/app/_models/ratingbytopic';
 import { JournalistService } from 'src/app/_services/journalist.service';
 import { RatingService } from 'src/app/_services/rating.service';
@@ -35,7 +36,6 @@ export class JournalistDetailComponent implements OnInit {
     this.journalistService
       .getJournalist(+this.route.snapshot.paramMap.get('id')!)
       .subscribe((journalist) => {
-        console.log(journalist);
         this.journalist = journalist;
         this.getRating();
       });
@@ -46,7 +46,8 @@ export class JournalistDetailComponent implements OnInit {
     this.ratingService
       .getJournalistRating(this.journalistRating)
       .subscribe((response) => {
-        this.journalist.rating = +response;
+        this.journalist.rating = <Rating>response;
+        console.log(this.journalist.rating);
       });
   }
 

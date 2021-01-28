@@ -17,9 +17,7 @@ export class JournalistAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addJournalist() {
-    console.log(this.model);
     this.journalistService.addJournalist(this.model).subscribe((response) => {
-      console.log(response);
       this.toastrService.success('Journalist added');
     });
   }

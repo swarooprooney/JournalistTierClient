@@ -31,8 +31,6 @@ export class JournalistListComponent implements OnInit {
   getJournalists() {
     this.journalistService.getJournalists().subscribe((response) => {
       this.journalists = response;
-      console.log(this.journalists);
-
       this.getJournalistsRating();
     });
   }
@@ -44,7 +42,7 @@ export class JournalistListComponent implements OnInit {
       this.ratingService
         .getJournalistRating(this.journalistRating)
         .subscribe((response) => {
-          this.journalists[index].rating = +response;
+          this.journalists[index].rating = response;
         });
     }
     console.log(this.ratingArray);

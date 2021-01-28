@@ -7,16 +7,9 @@ import { Journalist } from 'src/app/_models/journalist';
   styleUrls: ['./journalist-card.component.css'],
 })
 export class JournalistCardComponent implements OnInit {
-  @Input() journalist: Journalist;
-  constructor() {
-    this.journalist = {
-      journalistId: 0,
-      name: '',
-      rating: 0,
-      photoUrl: '',
-      description: '',
-    };
-  }
+  @Input() journalist!: Journalist;
+
+  constructor() {}
 
   ngOnInit(): void {}
 }
