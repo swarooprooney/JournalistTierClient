@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Topic } from 'src/app/_models/topic';
 import { TopicService } from 'src/app/_services/topic.service';
 
 @Component({
@@ -8,6 +10,7 @@ import { TopicService } from 'src/app/_services/topic.service';
 })
 export class TopicListComponent implements OnInit {
   topics: any;
+  topics$!: Observable<Topic[]>;
   constructor(private topicService: TopicService) {}
 
   ngOnInit(): void {
@@ -15,8 +18,6 @@ export class TopicListComponent implements OnInit {
   }
 
   getTopics() {
-    this.topicService.getTopics().subscribe((response) => {
-      this.topics = response;
-    });
+    this.topics$ = this.topicService.getTopics();
   }
 }
