@@ -30,6 +30,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptor/loading.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     TopicAddComponent,
     JournalistCardComponent,
     MemberEditComponent,
+    TextInputComponent,
   ],
   imports: [
     BrowserModule,

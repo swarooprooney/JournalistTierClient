@@ -1,69 +1,41 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
+<form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
   <h2 class="text-center text-primary">Sign up</h2>
   <hr />
-  <div class="form-group">
-    <input
-      type="text"
-      name="username"
-      [(ngModel)]="model.username"
-      placeholder="Username"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="password"
-      name="password"
-      [(ngModel)]="model.password"
-      placeholder="password"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="text"
-      name="knownas"
-      [(ngModel)]="model.knownAs"
-      placeholder="knownas"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="date"
-      name="dateofbirth"
-      [(ngModel)]="model.dateOfBirth"
-      placeholder="dateofbirth"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="text"
-      name="city"
-      [(ngModel)]="model.city"
-      placeholder="city"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="text"
-      name="state"
-      [(ngModel)]="model.state"
-      placeholder="state"
-      class="form-control"
-    />
-  </div>
-  <div class="form-group">
-    <input
-      type="text"
-      name="country"
-      [(ngModel)]="model.country"
-      placeholder="country"
-      class="form-control"
-    />
-  </div>
+  <app-text-input
+    [formControl]="registerForm.controls['username']"
+    [label]="'Username'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['password']"
+    [label]="'Password'"
+    [type]="'password'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['confirmPassword']"
+    [label]="'Confirm Password'"
+    [type]="'password'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['knownAs']"
+    [label]="'Known As'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['dateOfBirth']"
+    [label]="'DOB'"
+    [type]="'date'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['city']"
+    [label]="'City'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['state']"
+    [label]="'State'"
+  ></app-text-input>
+  <app-text-input
+    [formControl]="registerForm.controls['country']"
+    [label]="'Country'"
+  ></app-text-input>
   <div class="form-group text-center">
     <button
       type="submit"
@@ -90,3 +62,5 @@
     </ul>
   </div>
 </form>
+<p>Form Value: {{ registerForm.value | json }}</p>
+<p>Form status: {{ registerForm.status | json }}</p>
