@@ -31,6 +31,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './_interceptor/loading.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     JournalistCardComponent,
     MemberEditComponent,
     TextInputComponent,
+    DateInputComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     TabsModule.forRoot(),
     NgxSpinnerModule,
     FileUploadModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
