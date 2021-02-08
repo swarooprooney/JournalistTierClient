@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   AbstractControl,
-  FormControl,
+  FormBuilder,
   FormGroup,
   ValidatorFn,
   Validators,
@@ -20,28 +20,28 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   registerForm!: FormGroup;
   validationErrors: string[] = [];
-  constructor(private registrationService: RegistrationService) {}
+  constructor(
+    private registrationService: RegistrationService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
   }
 
   initializeForm() {
-    this.registerForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4),
-      ]),
-      confirmPassword: new FormControl('', [
-        Validators.required,
-        this.matchValues('password'),
-      ]),
-      knownAs: new FormControl('', Validators.required),
-      dateOfBirth: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required),
+    this.registerForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(4)]],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchValues('password')],
+      ],
+      knownAs: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      country: ['', Validators.required],
     });
     this.registerForm.controls.password.valueChanges.subscribe(() => {
       this.registerForm.controls.confirmPassword.updateValueAndValidity();
