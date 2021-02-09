@@ -53,14 +53,14 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value);
-    /*  this.registrationService.register(this.model).subscribe(
+    this.registrationService.register(this.registerForm.value).subscribe(
       (response) => {
         this.reset();
       },
       (error) => {
         this.validationErrors = error;
       }
-    ); */
+    );
   }
 
   reset() {
