@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Media, MediaClass } from '../_models/media';
+import { Media } from '../_models/media';
 
 @Injectable({
   providedIn: 'root',
