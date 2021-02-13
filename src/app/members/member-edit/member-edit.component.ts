@@ -57,23 +57,33 @@ export class MemberEditComponent implements OnInit {
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
         this.user.photoUrl = response;
+        this.updateUser();
         this.busyService.idle();
       }
+    };
+    this.uploader.onErrorItem = (item, response, status, headers) => {
+      this.toaster.error('Unable to upload photo');
+      this.toaster.info('Other details will be updated');
+      this.updateUser();
+      this.busyService.idle();
     };
   }
 
   saveChanges() {
-    if (this.editForm.dirty) {
-      this.userService.updateUser(this.user).subscribe((response) => {
-        this.toaster.success('Changes Saved Successfully');
-      });
-    }
     if (this.uploader.queue.length > 0) {
       let item = this.uploader.queue[0];
       item.upload();
       this.toaster.info('Photo change might take sometime to reflect');
+    } else {
+      this.updateUser();
     }
     this.editForm.reset(this.user);
+  }
+
+  updateUser() {
+    this.userService.updateUser(this.user).subscribe((response) => {
+      this.toaster.success('Changes Saved Successfully');
+    });
   }
 
   getUser(id: number) {

@@ -16,6 +16,8 @@ export class RegistrationService {
     private authenticationService: AuthenticationService
   ) {}
   register(model: any) {
+    console.log('inside register');
+    console.log(this.baseUrl + 'account/register');
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
         if (user) {

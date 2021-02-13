@@ -1,0 +1,77 @@
+<form [formGroup]="mediaAddForm" (ngSubmit)="saveChanges()" autocomplete="off">
+  <h2 class="text-center text-primary">Add Media</h2>
+  <hr />
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="form-group">
+        <app-text-input
+          [formControl]="mediaAddForm.controls['name']"
+          [label]="'Name'"
+        ></app-text-input>
+      </div>
+      <div class="form-group">
+        <textarea
+          formControlName="description"
+          class="form-control"
+          [class.is-invalid]="
+            mediaAddForm.get('description')?.errors &&
+            mediaAddForm.get('description')?.touched
+          "
+          placeholder="Description"
+        ></textarea>
+        <div
+          class="invalid-feedback"
+          *ngIf="this.mediaAddForm.controls?.description?.errors?.required"
+        >
+          Please enter description
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label
+            for="file-upload"
+            [hidden]="uploader.queue.length > 0"
+            class="custom-file-upload"
+          >
+            <i class="fa fa-cloud-upload"></i> Media Photo Upload
+          </label>
+          <input
+            type="file"
+            ng2FileSelect
+            [uploader]="uploader"
+            id="file-upload"
+          />
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="uploader.queue[0].remove()"
+            [hidden]="uploader.queue.length <= 0"
+          >
+            Remove <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
+          {{ uploader.queue[0]?.file?.name }}
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button
+          type="submit"
+          name="submit"
+          value="Submit"
+          class="btn btn-success mr-2"
+        >
+          Add Media
+        </button>
+        <button
+          name="Reset"
+          value="Reset"
+          (click)="reset()"
+          class="btn btn-default mr-2 btn-reset"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</form>

@@ -21,15 +21,25 @@
         </li>
         <ng-container *ngIf="authenticationService.currentUser$ | async">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/media" routerLinkActive="active"
-              >Media
-            </a>
+            <div class="dropdown custom-alignment" dropdown>
+              <a class="dropdown-toggle text-light" dropdownToggle>Media</a>
+              <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item" routerLink="/media">Media</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/addmedia">Add Media</a>
+              </div>
+            </div>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/topic" routerLinkActive="active"
-              >Topic</a
-            >
+            <div class="dropdown custom-alignment" dropdown>
+              <a class="dropdown-toggle text-light" dropdownToggle>Topics</a>
+              <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item" routerLink="/topic">Topics</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/addtopic">Add Topic</a>
+              </div>
+            </div>
           </li>
           <li class="nav-item">
             <div class="dropdown custom-alignment" dropdown>

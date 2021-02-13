@@ -7,6 +7,7 @@ import { JournalistAddComponent } from './journalists/journalist-add/journalist-
 import { JournalistDetailComponent } from './journalists/journalist-detail/journalist-detail.component';
 import { JournalistListComponent } from './journalists/journalist-list/journalist-list.component';
 import { JournalistRatingComponent } from './journalists/journalist-rating/journalist-rating.component';
+import { MediaAddComponent } from './media/media-add/media-add.component';
 import { MediaListComponent } from './media/media-list/media-list.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { TopicAddComponent } from './topic/topic-add/topic-add.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'addtopic',
         component: TopicAddComponent,
+      },
+      {
+        path: 'addmedia',
+        component: MediaAddComponent,
       },
       {
         path: 'member/edit',

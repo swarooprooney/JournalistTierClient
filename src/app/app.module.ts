@@ -33,6 +33,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { MediaAddComponent } from './media/media-add/media-add.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     MemberEditComponent,
     TextInputComponent,
     DateInputComponent,
+    MediaAddComponent,
   ],
   imports: [
     BrowserModule,

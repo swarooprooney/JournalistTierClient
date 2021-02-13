@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Media, MediaClass } from '../_models/media';
 
 @Injectable({
   providedIn: 'root',
@@ -10,5 +11,10 @@ export class MediaService {
   baseUrl = environment.apiUrl;
   getMedias() {
     return this.http.get(this.baseUrl + 'media');
+  }
+
+  addMedia(media: Media) {
+    console.log(media);
+    return this.http.post(this.baseUrl + 'media/', JSON.stringify(media));
   }
 }
