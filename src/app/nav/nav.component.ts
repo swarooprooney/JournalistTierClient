@@ -11,7 +11,7 @@ import { JournalistService } from '../_services/journalist.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-
+  isCollapsed: boolean = true;
   constructor(
     public authenticationService: AuthenticationService,
     private journalistService: JournalistService,

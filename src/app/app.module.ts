@@ -34,6 +34,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { MediaAddComponent } from './media/media-add/media-add.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,9 @@ import { MediaAddComponent } from './media/media-add/media-add.component';
     NgxSpinnerModule,
     FileUploadModule,
     BsDatepickerModule.forRoot(),
+    CollapseModule,
+
+    CollapseModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

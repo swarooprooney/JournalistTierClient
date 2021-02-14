@@ -9,10 +9,16 @@
       aria-controls="navbarCollapse"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      (click)="isCollapsed = !isCollapsed"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div
+      class="collapse navbar-collapse"
+      id="navbarCollapse"
+      [collapse]="isCollapsed"
+      [isAnimated]="true"
+    >
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="/media" routerLinkActive="active"
