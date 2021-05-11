@@ -1,4 +1,5 @@
-<p>media-list works!</p>
-<ul>
-  <li *ngFor="let media of medias">{{ media.name }}</li>
-</ul>
+<div class="row">
+  <div *ngFor="let media of medias" class="col-2 mt-2">
+    <app-media-card [media]="media"></app-media-card>
+  </div>
+</div>

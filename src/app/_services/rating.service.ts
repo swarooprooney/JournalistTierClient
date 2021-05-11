@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Media } from '../_models/media';
+import { MediaRating } from '../_models/MediaRating';
 import { RatingByTopic } from '../_models/ratingbytopic';
 
 @Injectable({
@@ -14,6 +16,14 @@ export class RatingService {
     return this.http.post(
       this.baseUrl + 'journalist/RateJournalist',
       JSON.stringify(model)
+    );
+  }
+
+  rateMedia(mediaRating: MediaRating) {
+    console.log(mediaRating);
+    return this.http.post(
+      this.baseUrl + 'media/RateMedia',
+      JSON.stringify(mediaRating)
     );
   }
 

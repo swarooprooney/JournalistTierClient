@@ -9,6 +9,7 @@ import { JournalistListComponent } from './journalists/journalist-list/journalis
 import { JournalistRatingComponent } from './journalists/journalist-rating/journalist-rating.component';
 import { MediaAddComponent } from './media/media-add/media-add.component';
 import { MediaListComponent } from './media/media-list/media-list.component';
+import { MediaRatingComponent } from './media/media-rating/media-rating.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { TopicAddComponent } from './topic/topic-add/topic-add.component';
 import { TopicListComponent } from './topic/topic-list/topic-list.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
         component: JournalistRatingComponent,
       },
       {
+        path: 'ratemedia',
+        component: MediaRatingComponent,
+      },
+      {
         path: 'addtopic',
         component: TopicAddComponent,
       },
@@ -49,6 +54,8 @@ const routes: Routes = [
   { path: 'journalist/:id', component: JournalistDetailComponent },
   { path: 'media', component: MediaListComponent },
   { path: 'topic', component: TopicListComponent },
+  { path: 'ratejournalist/:id', component: JournalistRatingComponent },
+  { path: 'ratemedia/:id', component: MediaRatingComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },

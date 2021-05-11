@@ -14,10 +14,12 @@
           [(ngModel)]="journalistRating.journalistId"
           name="selectJournalist"
         >
-          <option [selected]="true" value="-1">Select Journalist</option>
           <option
             *ngFor="let journalist of journalists"
             value="{{ journalist.journalistId }}"
+            selected="{{
+              journalist.journalistId == journalistRating.journalistId
+            }}"
           >
             {{ journalist.name }}
           </option>

@@ -35,6 +35,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { MediaAddComponent } from './media/media-add/media-add.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { MediaCardComponent } from './media/media-card/media-card.component';
+import { MediaRatingComponent } from './media/media-rating/media-rating.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     TextInputComponent,
     DateInputComponent,
     MediaAddComponent,
+    MediaCardComponent,
+    MediaRatingComponent,
   ],
   imports: [
     BrowserModule,

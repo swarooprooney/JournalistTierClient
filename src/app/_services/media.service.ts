@@ -10,7 +10,7 @@ export class MediaService {
   constructor(private http: HttpClient) {}
   baseUrl = environment.apiUrl;
   getMedias() {
-    return this.http.get(this.baseUrl + 'media');
+    return this.http.get<Media[]>(this.baseUrl + 'media');
   }
 
   addMedia(media: Media) {
