@@ -8,12 +8,13 @@
         <ng-container *ngIf="medias$ | async as mediaFromDbs">
           <select
             class="form-control mb-2"
-            name="selectTopic"
+            name="selectMedia"
             [(ngModel)]="mediaRating.mediaId"
           >
             <option
               *ngFor="let media of mediaFromDbs"
               [ngValue]="media.mediaId"
+              selected="{{ media.mediaId == mediaRating.mediaId }}"
             >
               {{ media.name }}
             </option>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -30,7 +31,8 @@ export class MediaRatingComponent implements OnInit {
     private mediaService: MediaService,
     private topicService: TopicService,
     private ratingService: RatingService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   defaultMedia: Media = {
@@ -43,16 +45,27 @@ export class MediaRatingComponent implements OnInit {
   ngOnInit(): void {
     this.getAllMedia();
     this.getAllTopics();
+    this.selectMedia();
   }
 
   getAllMedia() {
     this.medias$ = this.mediaService
       .getMedias()
       .pipe(tap((x) => x.unshift(this.defaultMedia)));
+    console.log('1');
   }
 
   getAllTopics() {
     this.topics$ = this.topicService.getTopics();
+  }
+  selectMedia() {
+    var id = +this.route.snapshot.paramMap.get('id')!;
+    if (id != 0) {
+      this.mediaRating.mediaId = id;
+    } else {
+      this.mediaRating.mediaId = -1;
+    }
+    console.log('2');
   }
   rateJournalist() {
     const user = JSON.parse(localStorage.getItem('user')!);
