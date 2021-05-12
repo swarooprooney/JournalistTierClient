@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { JournalistRating } from 'src/app/_models/journalistRating';
@@ -17,7 +16,6 @@ export class JournalistRatingComponent implements OnInit {
   journalists: any;
   topics: any;
   max: number = 5;
-  rate: number = 0;
   isReadonly: boolean = false;
   journalistRating: JournalistRating = {
     journalistId: -1,
@@ -25,16 +23,15 @@ export class JournalistRatingComponent implements OnInit {
     userId: 0,
     rating: 0,
   };
-  rating: Rating = {
-    rating: 0,
-    numberOfVotes: 0,
-  };
   journalistDefault: Journalist = {
     journalistId: -1,
     name: 'Please select a value',
     photoUrl: '',
     description: '',
-    rating: this.rating,
+    rating: {
+      rating: 0,
+      numberOfVotes: 0,
+    },
   };
   validationErrors: string[] = [];
   constructor(
@@ -46,7 +43,6 @@ export class JournalistRatingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.rate = 0;
     this.journalistService.getJournalists().subscribe((response) => {
       this.journalists = response;
       this.selectJournalist();
@@ -57,7 +53,7 @@ export class JournalistRatingComponent implements OnInit {
   }
   selectJournalist() {
     var id = +this.route.snapshot.paramMap.get('id')!;
-    this.journalists.push(this.journalistDefault);
+    this.journalists.unshift(this.journalistDefault);
     if (id != 0) {
       this.journalistRating.journalistId = id;
     } else {
@@ -65,12 +61,9 @@ export class JournalistRatingComponent implements OnInit {
     }
   }
 
-  rateJournalist(form: NgForm) {
-    this.journalistRating.rating = this.rate;
+  rateJournalist() {
     const user = JSON.parse(localStorage.getItem('user')!);
     this.journalistRating.userId = +user.userId;
-    this.journalistRating.journalistId = +this.journalistRating.journalistId;
-    this.journalistRating.topicId = +this.journalistRating.topicId;
     this.ratingService.rateJournalist(this.journalistRating).subscribe(
       () => {
         this.toastrService.success('Your rating has been captured');
