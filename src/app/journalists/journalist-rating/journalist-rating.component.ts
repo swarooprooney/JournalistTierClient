@@ -3,18 +3,20 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { JournalistRating } from 'src/app/_models/journalistRating';
 import { Journalist } from 'src/app/_models/journalist';
-import { Rating } from 'src/app/_models/rating';
 import { JournalistService } from 'src/app/_services/journalist.service';
 import { RatingService } from 'src/app/_services/rating.service';
 import { TopicService } from 'src/app/_services/topic.service';
+import { Topic } from 'src/app/_models/topic';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-journalist-rating',
   templateUrl: './journalist-rating.component.html',
   styleUrls: ['./journalist-rating.component.css'],
 })
 export class JournalistRatingComponent implements OnInit {
-  journalists: any;
-  topics: any;
+  journalists$!: Observable<Journalist[]>;
+  topics$!: Observable<Topic[]>;
   max: number = 5;
   isReadonly: boolean = false;
   journalistRating: JournalistRating = {
@@ -43,17 +45,14 @@ export class JournalistRatingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.journalistService.getJournalists().subscribe((response) => {
-      this.journalists = response;
-      this.selectJournalist();
-    });
-    this.topicService.getTopics().subscribe((response) => {
-      this.topics = response;
-    });
+    this.journalists$ = this.journalistService
+      .getJournalists()
+      .pipe(tap((x) => x.unshift(this.journalistDefault)));
+    this.selectJournalist();
+    this.topics$ = this.topicService.getTopics();
   }
   selectJournalist() {
     var id = +this.route.snapshot.paramMap.get('id')!;
-    this.journalists.unshift(this.journalistDefault);
     if (id != 0) {
       this.journalistRating.journalistId = id;
     } else {
