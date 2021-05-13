@@ -10,6 +10,7 @@
             class="form-control mb-2"
             [(ngModel)]="journalistRating.journalistId"
             name="selectJournalist"
+            required
           >
             <option
               *ngFor="let journalist of journalists"
@@ -29,6 +30,8 @@
             class="form-control"
             name="selectTopic"
             [(ngModel)]="journalistRating.topicId"
+            [required]="true"
+            #selectTopic="ngModel"
           >
             <option [selected]="true" value="-1">Select Topic</option>
             <option *ngFor="let topic of topics" [ngValue]="topic.topicId">
@@ -44,6 +47,7 @@
           [max]="max"
           [readonly]="isReadonly"
           name="rating"
+          required
         ></rating>
       </div>
 
@@ -53,6 +57,7 @@
           name="submit"
           value="Submit"
           class="btn btn-success mr-2"
+          [disabled]="validateForm()"
         >
           Rate Journalist
         </button>

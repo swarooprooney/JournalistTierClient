@@ -80,4 +80,15 @@ export class JournalistRatingComponent implements OnInit {
       }
     );
   }
+
+  validateForm(): boolean {
+    if (
+      this.journalistRating.topicId <= 0 ||
+      this.journalistRating.journalistId <= 0 ||
+      this.journalistRating.rating <= 0
+    ) {
+      return true;
+    }
+    return false;
+  }
 }
