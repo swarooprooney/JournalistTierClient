@@ -8,7 +8,7 @@ import { RatingService } from 'src/app/_services/rating.service';
 import { TopicService } from 'src/app/_services/topic.service';
 import { Topic } from 'src/app/_models/topic';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-journalist-rating',
   templateUrl: './journalist-rating.component.html',
@@ -45,9 +45,12 @@ export class JournalistRatingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.journalists$ = this.journalistService
-      .getJournalists()
-      .pipe(tap((x) => x.unshift(this.journalistDefault)));
+    this.journalists$ = this.journalistService.getJournalists().pipe(
+      map((x) => {
+        x.unshift(this.journalistDefault);
+        return x;
+      })
+    );
     this.selectJournalist();
     this.topics$ = this.topicService.getTopics();
   }

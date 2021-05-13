@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Media } from 'src/app/_models/media';
 import { MediaRating } from 'src/app/_models/MediaRating';
 import { Topic } from 'src/app/_models/topic';
@@ -53,10 +53,12 @@ export class MediaRatingComponent implements OnInit {
   }
 
   getAllMedia() {
-    this.medias$ = this.mediaService
-      .getMedias()
-      .pipe(tap((x) => x.unshift(this.defaultMedia)));
-    console.log('1');
+    this.medias$ = this.mediaService.getMedias().pipe(
+      map((x) => {
+        x.unshift(this.defaultMedia);
+        return x;
+      })
+    );
   }
 
   getAllTopics() {
