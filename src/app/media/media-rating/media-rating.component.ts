@@ -40,6 +40,10 @@ export class MediaRatingComponent implements OnInit {
     name: 'Please select a media',
     description: 'Select media',
     photoUrl: '',
+    rating: {
+      rating: 0,
+      numberOfVotes: 0,
+    },
   };
 
   ngOnInit(): void {
